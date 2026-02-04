@@ -1,0 +1,200 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Apple-style minimalistic design system */
+
+@layer base {
+  :root {
+    /* Core palette - warm whites and subtle grays */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 8%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 8%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 8%;
+
+    /* Primary - refined slate blue */
+    --primary: 220 14% 15%;
+    --primary-foreground: 0 0% 100%;
+
+    /* Secondary - soft warm gray */
+    --secondary: 40 5% 96%;
+    --secondary-foreground: 0 0% 8%;
+
+    /* Muted - subtle backgrounds */
+    --muted: 40 5% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    /* Accent - bright action color */
+    --accent: 220 90% 56%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 91%;
+    --input: 0 0% 91%;
+    --ring: 220 90% 56%;
+
+    --radius: 0.75rem;
+
+    /* Custom tokens */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+    --shadow-card: 0 1px 3px 0 rgba(0, 0, 0, 0.04), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+    --shadow-elevated: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -2px rgba(0, 0, 0, 0.05);
+    --shadow-modal: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+
+    /* Status colors */
+    --status-new: 142 76% 36%;
+    --status-updated: 38 92% 50%;
+    --status-inactive: 0 0% 55%;
+    --status-imported: 220 90% 56%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 0 0% 25%;
+    --sidebar-primary: 0 0% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 91%;
+    --sidebar-ring: 220 90% 56%;
+  }
+
+  .dark {
+    --background: 0 0% 5%;
+    --foreground: 0 0% 95%;
+
+    --card: 0 0% 8%;
+    --card-foreground: 0 0% 95%;
+
+    --popover: 0 0% 8%;
+    --popover-foreground: 0 0% 95%;
+
+    --primary: 0 0% 95%;
+    --primary-foreground: 0 0% 8%;
+
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 0 0% 95%;
+
+    --muted: 0 0% 15%;
+    --muted-foreground: 0 0% 55%;
+
+    --accent: 220 90% 60%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62% 30%;
+    --destructive-foreground: 0 0% 95%;
+
+    --border: 0 0% 18%;
+    --input: 0 0% 18%;
+    --ring: 220 90% 60%;
+
+    --sidebar-background: 0 0% 8%;
+    --sidebar-foreground: 0 0% 90%;
+    --sidebar-primary: 220 80% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 15%;
+    --sidebar-accent-foreground: 0 0% 90%;
+    --sidebar-border: 0 0% 18%;
+    --sidebar-ring: 220 90% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "rlig" 1, "calt" 1;
+  }
+
+  /* Typography scale */
+  h1 {
+    @apply text-4xl font-semibold tracking-tight md:text-5xl;
+  }
+
+  h2 {
+    @apply text-2xl font-semibold tracking-tight md:text-3xl;
+  }
+
+  h3 {
+    @apply text-xl font-medium tracking-tight;
+  }
+
+  h4 {
+    @apply text-lg font-medium;
+  }
+}
+
+@layer utilities {
+  /* Animation utilities */
+  .animate-fade-in {
+    animation: fade-in 0.3s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slide-up 0.4s ease-out forwards;
+  }
+
+  .animate-scale-in {
+    animation: scale-in 0.2s ease-out forwards;
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes slide-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes scale-in {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  /* Glass effect */
+  .glass {
+    @apply bg-background/80 backdrop-blur-xl;
+  }
+
+  /* Status badge utilities */
+  .status-new {
+    @apply bg-[hsl(var(--status-new))]/10 text-[hsl(var(--status-new))];
+  }
+
+  .status-updated {
+    @apply bg-[hsl(var(--status-updated))]/10 text-[hsl(var(--status-updated))];
+  }
+
+  .status-inactive {
+    @apply bg-[hsl(var(--status-inactive))]/10 text-[hsl(var(--status-inactive))];
+  }
+
+  .status-imported {
+    @apply bg-[hsl(var(--status-imported))]/10 text-[hsl(var(--status-imported))];
+  }
+}
